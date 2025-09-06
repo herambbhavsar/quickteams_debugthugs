@@ -41,7 +41,7 @@ const Home = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="join" asChild>
-              <Link to="/teams">Join Team</Link>
+              <Link to="/hackathons">Join Team</Link>
             </Button>
             <Button size="lg" variant="secondary" asChild>
               <Link to="/hackathons">Create Team</Link>

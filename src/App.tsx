@@ -9,6 +9,7 @@ import Hackathons from "./pages/Hackathons";
 import Teams from "./pages/Teams";
 import Profile from "./pages/Profile";
 import Leaderboard from "./pages/Leaderboard";
+import TeamDetails from "./pages/TeamDetails";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/hackathons" element={<Hackathons />} />
           <Route path="/teams" element={<Teams />} />
+          <Route path="/team/:teamId" element={<TeamDetails />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

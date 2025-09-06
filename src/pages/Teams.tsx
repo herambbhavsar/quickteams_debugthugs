@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,6 +10,7 @@ import Navbar from "@/components/layout/Navbar";
 
 const Teams = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
   
   const filterOptions = ["Location", "Duration", "Date", "Mode", "Fees", "Prize"];
   
@@ -203,10 +204,18 @@ const Teams = () => {
                                 </Badge>
                               ))}
                             </div>
-                            <Button variant="join" className="w-full">
+                            <Button 
+                              variant="join" 
+                              className="w-full"
+                              onClick={() => navigate(`/team/${team.id}`)}
+                            >
                               JOIN
                             </Button>
-                            <Button variant="ghost" className="w-full mt-2 text-hackathon-green">
+                            <Button 
+                              variant="ghost" 
+                              className="w-full mt-2 text-hackathon-green"
+                              onClick={() => navigate(`/team/${team.id}`)}
+                            >
                               Know More
                             </Button>
                           </div>

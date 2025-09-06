@@ -65,18 +65,36 @@ const Login = () => {
                 <>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="linkedin">LinkedIn</Label>
+                      <Label htmlFor="college">College</Label>
                       <Input
-                        id="linkedin"
-                        placeholder="LinkedIn profile"
+                        id="college"
+                        placeholder="Enter your college"
                         className="bg-background border-border"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="dob">Date of Birth</Label>
+                      <Label htmlFor="gender">Gender</Label>
                       <Input
-                        id="dob"
-                        type="date"
+                        id="gender"
+                        placeholder="Gender"
+                        className="bg-background border-border"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="location">Location</Label>
+                      <Input
+                        id="location"
+                        placeholder="Enter your location"
+                        className="bg-background border-border"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="linkedin">LinkedIn ID</Label>
+                      <Input
+                        id="linkedin"
+                        placeholder="LinkedIn profile"
                         className="bg-background border-border"
                       />
                     </div>
@@ -86,14 +104,6 @@ const Login = () => {
                     <Input
                       id="techstack"
                       placeholder="React, Node.js, Python..."
-                      className="bg-background border-border"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="location">Location</Label>
-                    <Input
-                      id="location"
-                      placeholder="Enter your location"
                       className="bg-background border-border"
                     />
                   </div>
