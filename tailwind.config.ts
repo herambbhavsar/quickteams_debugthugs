@@ -52,6 +52,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				'hackathon-green': 'hsl(var(--hackathon-green))',
+				'hackathon-purple': 'hsl(var(--hackathon-purple))',
+				'hackathon-dark': 'hsl(var(--hackathon-dark))',
+				'hackathon-card': 'hsl(var(--hackathon-card))',
+				'hackathon-muted': 'hsl(var(--hackathon-muted))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
