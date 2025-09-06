@@ -1,15 +1,36 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Search, Users, Calendar, MapPin } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/layout/Navbar";
 
 const Hackathons = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+  const navigate = useNavigate();
+  const { toast } = useToast();
   
   const filterOptions = ["Location", "Duration", "Date", "Mode", "Fees", "Prize"];
+
+  const handleFilterToggle = (filter: string) => {
+    setActiveFilters(prev => 
+      prev.includes(filter) 
+        ? prev.filter(f => f !== filter)
+        : [...prev, filter]
+    );
+  };
+
+  const handleJoinHackathon = (hackathonTitle: string) => {
+    toast({
+      title: "Joined Successfully!",
+      description: `You've joined "${hackathonTitle}". Check your profile for details.`,
+    });
+    navigate("/teams");
+  };
   
   const hackathons = [
     {
@@ -50,8 +71,14 @@ const Hackathons = () => {
     },
   ];
 
-  const suggestedHackathons = hackathons.slice(0, 3);
-  const allOpportunities = [...hackathons, ...hackathons.slice(0, 2)];
+  // Filter hackathons based on search term
+  const filteredHackathons = hackathons.filter(hackathon =>
+    hackathon.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    hackathon.organizer.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const suggestedHackathons = filteredHackathons.slice(0, 3);
+  const allOpportunities = [...filteredHackathons, ...filteredHackathons.slice(0, 2)];
 
   return (
     <div className="min-h-screen bg-background">
@@ -76,7 +103,12 @@ const Hackathons = () => {
           {/* Filter Buttons */}
           <div className="flex flex-wrap gap-3 mb-8">
             {filterOptions.map((filter) => (
-              <Button key={filter} variant="filter" size="sm">
+              <Button 
+                key={filter} 
+                variant={activeFilters.includes(filter) ? "default" : "filter"} 
+                size="sm"
+                onClick={() => handleFilterToggle(filter)}
+              >
                 {filter}
               </Button>
             ))}
@@ -111,7 +143,11 @@ const Hackathons = () => {
                     <Calendar className="w-4 h-4" />
                     <span>{hackathon.timeLeft}</span>
                   </div>
-                  <Button variant="join" className="w-full">
+                  <Button 
+                    variant="join" 
+                    className="w-full"
+                    onClick={() => handleJoinHackathon(hackathon.title)}
+                  >
                     JOIN
                   </Button>
                 </CardContent>
@@ -148,7 +184,11 @@ const Hackathons = () => {
                     <Calendar className="w-4 h-4" />
                     <span>{hackathon.timeLeft}</span>
                   </div>
-                  <Button variant="join" className="w-full">
+                  <Button 
+                    variant="join" 
+                    className="w-full"
+                    onClick={() => handleJoinHackathon(hackathon.title)}
+                  >
                     JOIN
                   </Button>
                 </CardContent>
